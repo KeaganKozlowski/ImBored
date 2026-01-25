@@ -4,17 +4,20 @@ public class GameState {
         Player newPlayer = new Player();
         ItemCrafter newItemCrafter = new ItemCrafter();
 
+        // Game info when starting
+        int level = 1;
+
         // Test that ItemCrafter works
         Item newItem = newItemCrafter.createNewItem();
         newItem.showItemInfo();
 
         // Test reroll capabilities
-        newPlayer.setCoins(500000000);
-        newItemCrafter.reroll(newPlayer);
+        //newPlayer.setCoins(500000000);
+        //newItemCrafter.reroll(newPlayer);
 
-        // Game continues happening while player health is greater than 0
-//        while (newPlayer.getHealth() > 0) {
-//
-//        }
+//         Game continues happening while player health is greater than 0
+        while (newPlayer.getHealth() > 0) {
+            // Generate 
+        }
     }
 }

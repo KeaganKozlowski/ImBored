@@ -51,3 +51,16 @@ The highscores are displayed at the end of a game and change if any are beaten.
   - When a item breaks, the player loses it
     - So if it is equipped -> equippedItem = None
 - Monsters
+  - There are currently 3 times of monsters
+    - Zombie (Weakest)
+      - 10 health
+      - 5 damage
+      - 50% chance attack hits
+    - Skeleton (Middle)
+      - 20 health
+      - 8 damage
+      - 30% chance attack hits
+    - Spider (Strongest)
+      - 15 health
+      - 15 damage
+      - 8% chance attack hits
