@@ -40,10 +40,13 @@ public class ItemCrafter {
         Item currentItem = this.item;
         while (this.canUse && calculateCoinsForReroll(currentRoll) <= currentCoins){
             currentItem = createNewItem();
+            System.out.println("------");
             currentItem.showItemInfo();
+            System.out.println("------");
             currentCoins -= calculateCoinsForReroll(currentRoll);
             currentRoll++;
             if (currentItem.getRarity().equals("Mythic")) {
+                System.out.println("Well done you pulled a Mythic item");
                 setCanUse();
             }
         }

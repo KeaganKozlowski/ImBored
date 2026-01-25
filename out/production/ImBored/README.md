@@ -33,8 +33,10 @@ The highscores are displayed at the end of a game and change if any are beaten.
     - Spears (**Cheapest**)
     - Bows (**2nd Cheapest**)
   - At the end of a stage the ItemCrafter can be used to create a new item, Player can then choose to keep or discard
+  - After a player crafts and they choose to discard if they have enough coins then they can reroll
+    - Rerolls start at 50 coins and go up 
 - Player
-  - Players can hold items
+  - Players can hold items (inventory)
   - Players can use the ItemCrafter to craft items
   - Players can kill, get hurt by and die to monsters
   - Players have the following attributes
@@ -43,6 +45,8 @@ The highscores are displayed at the end of a game and change if any are beaten.
     - level
     - currentDamage (Which is affected by equipped item)
     - coins
+      - A player starts with 0 coins
+      - coins can be used to purchase rerolls for the ItemCrafter
   - A player gains experience from killing monsters, which can be used to level up
   - When a item breaks, the player loses it
     - So if it is equipped -> equippedItem = None

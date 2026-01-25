@@ -7,5 +7,14 @@ public class GameState {
         // Test that ItemCrafter works
         Item newItem = newItemCrafter.createNewItem();
         newItem.showItemInfo();
+
+        // Test reroll capabilities
+        newPlayer.setCoins(500000000);
+        newItemCrafter.reroll(newPlayer);
+
+        // Game continues happening while player health is greater than 0
+//        while (newPlayer.getHealth() > 0) {
+//
+//        }
     }
 }
