@@ -17,8 +17,8 @@ public class Item {
     private int setDamage(String rarity){
         return switch (rarity) {
             case "Common" -> random.nextInt(1, 10);
-            case "Uncommon" -> random.nextInt(10, 15);
-            case "Rare" -> random.nextInt(15, 20);
+            case "Epic" -> random.nextInt(10, 15);
+            case "Legendary" -> random.nextInt(15, 20);
             default -> random.nextInt(20, 50);
         };
     }
@@ -55,8 +55,18 @@ public class Item {
     public int getSellPrice(){
         return this.sellPrice;
     }
+    public String getRarity(){
+         return this.rarity;
+    }
     public void setDurabilityAfterUse(){
          this.durability -= 1;
+    }
+    public void showItemInfo(){
+         System.out.println("Type: " + this.type);
+         System.out.println("Rarity: " + this.rarity);
+         System.out.println("Damage: " + this.damage);
+         System.out.println("Durability: " + this.durability);
+         System.out.println("Sell Price: " + this.sellPrice);
     }
 
 }
