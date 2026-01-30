@@ -6,15 +6,18 @@ public class GameState {
     private static int currentFloor = 0;
     private static ArrayList<Monster> enemies = new ArrayList<>();
     private static Monster currentMonster = null;
-    Scanner playerInput = new Scanner(System.in);
+    private static Scanner playerInput = new Scanner(System.in);
+    // Initalize objects
+    private static Player newPlayer;
+    private static ItemCrafter newItemCrafter;
     public static void main(String[] args) {
         // Create a new player
-        Player newPlayer = new Player();
-        ItemCrafter newItemCrafter = new ItemCrafter();
+        newPlayer = new Player();
+        newItemCrafter = new ItemCrafter();
 
         // Test that ItemCrafter works
-        Item newItem = newItemCrafter.createNewItem();
-        newItem.showItemInfo();
+        // Item newItem = newItemCrafter.createNewItem();
+        // newItem.showItemInfo();
 
         // Test reroll capabilities
         //newPlayer.setCoins(500000000);
@@ -38,10 +41,29 @@ public class GameState {
                 }
                 enemies.remove(currentMonster);
             }
+            currentFloor++;
             // Create an item for the player
-            
+            newPlayer.setAddItemtoInventory(newItemCrafter.createNewItem());
+            // Show player inventory beforehand
+            System.out.println("Here is your inventory to help you:");
+            newPlayer.showPlayerInventory();
             // Let the player reroll if they choose to
+            System.out.println("Would you like a new item: y(es)|n(o): ");
+            if (playerInput.nextLine().equalsIgnoreCase("y")) {
+                newPlayer.setAddItemtoInventory(newItemCrafter.reroll(newPlayer));
+            }
+            System.out.println("What would you like to do next: \n" +
+                                "1. Select new weapon from inventory \n" +
+                                "2. Continue fight: ");
+            if (playerInput.nextLine().equalsIgnoreCase("1")) {
+                newPlayer.showPlayerInventory();
+                System.out.println("Which one would you like to select, give from 0->x");
+                newPlayer.setEquippedItem(playerInput.nextInt());
+            } else {
+                break;
+            }
         }
+        System.out.println("You reach floor " + currentFloor);
     }
     private static ArrayList<Monster> generateMonsters(int floor) {
         ArrayList<Monster> monsters = new ArrayList<>();

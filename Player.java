@@ -38,6 +38,7 @@ public class Player {
     }
     public void setEquippedItem(int choice){
         this.equippedItem = this.inventory.get(choice);
+        setCurrentDamage();
     }
     public void setCurrentDamage(){
         this.currentDamage = equippedItem.getDamage();
@@ -67,7 +68,12 @@ public class Player {
         return this.currentDamage;
     }
     public void showPlayerInventory(){
-        System.out.println(this.inventory);
+        //System.out.println(this.inventory);
+        for (Item item: this.inventory){
+            System.out.println(this.inventory.indexOf(item)+":");
+            item.showItemInfo();
+        }
+        System.out.println("----------------");
     }
     public void showPlayerInfo(){
         showPlayerInventory();
