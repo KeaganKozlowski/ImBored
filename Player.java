@@ -15,7 +15,7 @@ public class Player {
         this.experience = 0;
         this.coins = 0;
         this.equippedItem = null;
-        this.currentDamage = 0;
+        this.currentDamage = 1;
     }
     public void setHealth(int damageTaken){
         this.health -= damageTaken;

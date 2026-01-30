@@ -50,6 +50,7 @@ The highscores are displayed at the end of a game and change if any are beaten.
   - A player gains experience from killing monsters, which can be used to level up
   - When a item breaks, the player loses it
     - So if it is equipped -> equippedItem = None
+  - A player starts with no weapon and their base attack is 1
 - Monsters
   - There are currently 3 times of monsters
     - Zombie (Weakest)

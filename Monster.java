@@ -10,5 +10,8 @@ public abstract class Monster {
     public void takeDamage(int damage) {
         this.health -= damage;
     }
+    public int getHealth() {
+        return this.health;
+    }
     public abstract int attack();
 }
