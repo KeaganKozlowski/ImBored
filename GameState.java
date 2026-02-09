@@ -2,15 +2,17 @@ import java.util.*;
 import java.util.Scanner;
 
 public class GameState {
-    private static final String[] monsterOptions = new String[]{"Zombie", "Skeleton", "Spider"};
-    private static int currentFloor = 0;
-    private static ArrayList<Monster> enemies = new ArrayList<>();
-    private static Monster currentMonster = null;
-    private static Scanner playerInput = new Scanner(System.in);
+    private final String[] monsterOptions = new String[]{"Zombie", "Skeleton", "Spider"};
+    private int currentFloor = 0;
+    private ArrayList<Monster> enemies = new ArrayList<>();
+    private Monster currentMonster = null;
+    private Scanner playerInput = new Scanner(System.in);
     // Initalize objects
-    private static Player newPlayer;
-    private static ItemCrafter newItemCrafter;
-    public static void main(String[] args) {
+    private Player newPlayer;
+    private ItemCrafter newItemCrafter;
+    // Bool for actual gamestate
+    private boolean isRunning;
+    public void GameState() {
         // Create a new player
         newPlayer = new Player();
         newItemCrafter = new ItemCrafter();
@@ -23,7 +25,10 @@ public class GameState {
         //newPlayer.setCoins(500000000);
         //newItemCrafter.reroll(newPlayer);
 
-//         Game continues happening while player health is greater than 0
+        // gamestate
+        this.isRunning = true;
+
+        // Game continues happening while player health is greater than 0
         while (newPlayer.getHealth() > 0) {
             // Generate enemies
             enemies = generateMonsters(currentFloor);
@@ -64,8 +69,21 @@ public class GameState {
             }
         }
         System.out.println("You reach floor " + currentFloor);
+
     }
-    private static ArrayList<Monster> generateMonsters(int floor) {
+    public void update(){
+        if (newPlayer.getHealth() <= 0) {
+            endGame("You died game over");
+        }
+    }
+    public void endGame(String message) {
+        System.out.println(message);
+        this.isRunning = false;
+    }
+    public boolean isRunning(){
+        return isRunning;
+    }
+    private ArrayList<Monster> generateMonsters(int floor) {
         ArrayList<Monster> monsters = new ArrayList<>();
         for (int i = 0; i < floor + 1; i++) {
             String monsterType = monsterOptions[(int) (Math.random() * monsterOptions.length)];
@@ -80,7 +98,7 @@ public class GameState {
         }
         return monsters;
     }
-    private static boolean attackHit(boolean isPlayer){
+    private boolean attackHit(boolean isPlayer){
         int number = (int) (Math.random() * 100);
         if (isPlayer){
             return number > 49;
